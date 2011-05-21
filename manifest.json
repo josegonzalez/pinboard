@@ -1,6 +1,6 @@
 {
-    "name": "Pinboard",
-    "version": "1.1.0",
+    "name": "Pinboard-tibbetts",
+    "version": "1.2.0",
     "description": "A toolbar button for the excellent Pinboard (http://pinboard.in) bookmarking service.",   
     "icons": {
 		"64": "icon_64.png",
