@@ -14,6 +14,16 @@
     },   
     "options_page": "options.html",
     "permissions": [ 
-        "tabs"
+        "tabs",
+	"http://*/*", 
+	"https://*/*"
+    ],
+    "content_scripts": [
+	{
+	    "matches": ["http://*/*", "https://*/*"],
+	    "js": ["selection.js"],
+	    "run_at": "document_start",
+	    "all_frames": true
+	}
     ]
 }
