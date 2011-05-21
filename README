@@ -1,0 +1,7 @@
+pinboard extension for Google chrome, based on
+https://github.com/samclark/pinboard aka
+https://chrome.google.com/webstore/detail/lclbbneapfiaihigbkalcoophalpbapl
+
+To use this, clone the repo, enable developer extensions, and load
+it. Ping me if you think I should be pushing this to the chrome
+extensions.
