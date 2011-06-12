@@ -1,151 +1,8 @@
 <html>
   <head>
     <title>Pinboard Options</title>
-    <style type="text/css">
-      div#body-content {
-        padding-left: 2px;
-        padding-right: 2px;
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 87%;
-      }
-
-      div.options-title h1{
-        background-image: url('icon_64.png');
-        background-repeat: no-repeat;
-        line-height: 64px;
-        text-indent:70px;
-        vertical-align: middle;
-        font-size: 175%;
-      }
-
-      div.options-table {
-        background-color: #f4f6fc;
-        border-top: 1px solid #b5c7de;
-        border-bottom: 1px solid #EDEFF5;
-      }
-
-      div.options-table-header {
-        background-color: #ebeff9;
-        line-height: 20px;
-        vertical-align: middle;
-        text-indent: 6px;
-        border-bottom: 10px solid #f4f6fc;
-        font-weight: bold;
-      }
-
-      div.options-table-row {
-        font-size: 85%;
-        background-color: #f4f6fc;
-        line-height: 35px;
-        vertical-align: middle;
-        text-indent: 12px;
-        display: table-row;
-      }
-
-      div.options-table-cell {
-        display: table-cell;
-      }
-
-      div.options-buttons {
-        width: 100%;
-        padding-top: 10px;
-      }
-
-      span#optionsSavedMessage {
-        visibility: hidden;
-        background-color: #fdffbd;
-        border: 1px dotted #b5c7de;
-        margin-right: 40px;
-        padding-right: 40px;
-        padding-left: 40px;
-        width: 200px;
-      }
-
-      span.optionsIcon {
-        padding-right: 10px;
-      }
-    </style>
-    <script type="text/javascript">
-      function getTextValue(elementId) {
-        var textElement = document.getElementById(elementId);
-        return textElement.value;
-      }
-
-      function setTextValue(elementId, text) {
-        var textElement = document.getElementById(elementId);
-        textElement.value = text;
-      }
-
-      function getIconName() {
-        if (document.getElementById("iconNameB").checked)
-          return "b";
-        else if (document.getElementById("iconNameC").checked)
-          return "c";
-        else if (document.getElementById("iconNameD").checked)
-          return "d";
-        return "a";
-      }
-
-      function setIconName(iconName) {
-        if ("b" == iconName)
-          document.getElementById("iconNameB").checked = true;
-        else if ("c" == iconName)
-          document.getElementById("iconNameC").checked = true;
-        else if ("d" == iconName)
-          document.getElementById("iconNameD").checked = true;
-        else
-          document.getElementById("iconNameA").checked = true;
-      }
-
-      function getCheckboxState(elementId) {
-        var checkboxElement = document.getElementById(elementId);
-        if (true == checkboxElement.checked)
-          return "yes";
-        else
-          return "no";
-      }
-
-      function setCheckboxState(elementId, checked) {
-        var checkboxElement = document.getElementById(elementId);
-        checkboxElement.checked = ("yes" == checked);
-      }
-
-      function showOptionsSavedMessage() {
-        var statusElement = document.getElementById("optionsSavedMessage");
-        statusElement.setAttribute("style", "visibility: visible;");
-        setTimeout(function() { statusElement.setAttribute("style", "visibility: hidden;");}, 1000);
-      }
-
-      function loadOptions() {
-        var options = chrome.extension.getBackgroundPage().getOptionAll();
-        setTextValue("userName", options.userName);
-        setIconName(options.iconName);
-        setCheckboxState("showAllBookmarks", options.showAllBookmarks);
-        setCheckboxState("showPrivateBookmarks", options.showPrivateBookmarks);
-        setCheckboxState("showPublicBookmarks", options.showPublicBookmarks);
-        setCheckboxState("showUnreadBookmarks", options.showUnreadBookmarks);
-        setCheckboxState("showUntaggedBookmarks", options.showUntaggedBookmarks);
-        setCheckboxState("showStarredBookmarks", options.showStarredBookmarks);
-        setCheckboxState("showSaveBookmark", options.showSaveBookmark);
-        setCheckboxState("showReadLater", options.showReadLater);
-      }
-
-      function saveOptions() {
-        chrome.extension.getBackgroundPage().setOptionAll({
-          userName: getTextValue("userName"),
-          iconName: getIconName(),
-          showAllBookmarks: getCheckboxState("showAllBookmarks"),
-          showPrivateBookmarks: getCheckboxState("showPrivateBookmarks"),
-          showPublicBookmarks: getCheckboxState("showPublicBookmarks"),
-          showUnreadBookmarks: getCheckboxState("showUnreadBookmarks"),
-          showUntaggedBookmarks: getCheckboxState("showUntaggedBookmarks"),
-          showStarredBookmarks: getCheckboxState("showStarredBookmarks"),
-          showSaveBookmark: getCheckboxState("showSaveBookmark"),
-          showReadLater: getCheckboxState("showReadLater")
-        });
-        showOptionsSavedMessage();
-      }
-    </script>
+    <link rel="stylesheet" href="src/css/options.css">
+    <script src="src/js/options.js"></script>
   </head>
   <body onload="loadOptions()">
     <div id="body-content">
@@ -166,10 +23,34 @@
               <span>Icon:</span>
             </div>
             <div class="options-table-cell">
-              <span class="optionsIcon"><input id="iconNameA" type="radio" name="iconName" value="a"/><img src="icon_19_a.png"/></span>
-              <span class="optionsIcon"><input id="iconNameB" type="radio" name="iconName" value="b"/><img src="icon_19_b.png"/></span>
-              <span class="optionsIcon"><input id="iconNameC" type="radio" name="iconName" value="c"/><img src="icon_19_c.png"/></span>
-              <span class="optionsIcon"><input id="iconNameD" type="radio" name="iconName" value="d"/><img src="icon_19_d.png"/></span>
+              <span class="optionsIcon"><input id="iconNameA" type="radio" name="iconName" value="a"/><img src="src/img/icon_19_a.png"/></span>
+              <span class="optionsIcon"><input id="iconNameB" type="radio" name="iconName" value="b"/><img src="src/img/icon_19_b.png"/></span>
+              <span class="optionsIcon"><input id="iconNameC" type="radio" name="iconName" value="c"/><img src="src/img/icon_19_c.png"/></span>
+              <span class="optionsIcon"><input id="iconNameD" type="radio" name="iconName" value="d"/><img src="src/img/icon_19_d.png"/></span>
+            </div>
+          </div>
+          <div class="options-table-row">
+            <div class="options-table-cell">
+              <span>Show "save bookmark":</span>
+            </div>
+            <div class="options-table-cell">
+              <input type="checkbox" id="showSaveBookmark">
+            </div>
+          </div>
+          <div class="options-table-row">
+            <div class="options-table-cell">
+              <span>Show "read later":</span>
+            </div>
+            <div class="options-table-cell">
+              <input type="checkbox" id="showReadLater">
+            </div>
+          </div>
+          <div class="options-table-row">
+            <div class="options-table-cell">
+              <span>Show "unread bookmarks":</span>
+            </div>
+            <div class="options-table-cell">
+              <input type="checkbox" id="showUnreadBookmarks">
             </div>
           </div>
           <div class="options-table-row">
@@ -198,14 +79,6 @@
           </div>
           <div class="options-table-row">
             <div class="options-table-cell">
-              <span>Show "unread bookmarks":</span>
-            </div>
-            <div class="options-table-cell">
-              <input type="checkbox" id="showUnreadBookmarks">
-            </div>
-          </div>
-          <div class="options-table-row">
-            <div class="options-table-cell">
               <span>Show "untagged bookmarks":</span>
             </div>
             <div class="options-table-cell">
@@ -222,18 +95,18 @@
           </div>
           <div class="options-table-row">
             <div class="options-table-cell">
-              <span>Show "save bookmark":</span>
+              <span>Show "save tab set":</span>
             </div>
             <div class="options-table-cell">
-              <input type="checkbox" id="showSaveBookmark">
+              <input type="checkbox" id="showSaveTabSet">
             </div>
           </div>
           <div class="options-table-row">
             <div class="options-table-cell">
-              <span>Show "read later":</span>
+              <span>Show "tab sets":</span>
             </div>
             <div class="options-table-cell">
-              <input type="checkbox" id="showReadLater">
+              <input type="checkbox" id="showTabSets">
             </div>
           </div>
         </div>
