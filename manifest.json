@@ -1,29 +1,27 @@
 {
-    "name": "Pinboard-tibbetts",
-    "version": "1.2.0",
-    "description": "A toolbar button for the excellent Pinboard (http://pinboard.in) bookmarking service.",   
-    "icons": {
-		"64": "icon_64.png",
-        "128": "icon_128.png" 
-    },
-	"background_page": "background.html",
-    "browser_action": {
-        "default_icon": "icon_19.png",
-        "default_title": "Pinboard",
-		"default_popup": "popup.html"		
-    },   
-    "options_page": "options.html",
-    "permissions": [ 
-        "tabs",
-	"http://*/*", 
-	"https://*/*"
-    ],
-    "content_scripts": [
-	{
-	    "matches": ["http://*/*", "https://*/*"],
-	    "js": ["selection.js"],
-	    "run_at": "document_start",
-	    "all_frames": true
-	}
-    ]
+  "name": "Pinboard-tibbetts",
+  "version": "1.2.0",
+  "description": "A toolbar button for the excellent Pinboard (http://pinboard.in) bookmarking service.",
+  "icons": {
+    "64": "icon_64.png",
+    "128": "icon_128.png"
+  },
+  "background_page": "background.html",
+  "browser_action": {
+    "default_icon": "icon_19.png",
+    "default_title": "Pinboard",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [ {
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["selection.js"],
+    "run_at": "document_start",
+    "all_frames": true
+  } ]
 }
