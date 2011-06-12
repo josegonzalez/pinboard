@@ -80,18 +80,15 @@
         chrome.tabs.getSelected(null , function(tab) {
           chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function (response) {
             var description = response.data;
+            var url = "http://pinboard.in/add?jump=close&url="
+                      + encodeURIComponent(tab.url) + "&title="
+                      + encodeURIComponent(tab.title);
+
             if (description.length > 0) {
-              window.open("http://pinboard.in/add?jump=close&url=" + encodeURIComponent(tab.url) +
-                "&title=" + encodeURIComponent(tab.title) +
-                "&description=" + encodeURIComponent(description.substr(0, 256)),
-                "pinboad.in",
-                "location=no,links=no,scrollbars=no,toolbar=no,width=700,height=350");
-            } else {
-              window.open("http://pinboard.in/add?jump=close&url=" + encodeURIComponent(tab.url) +
-                "&title=" + encodeURIComponent(tab.title),
-                "pinboad.in",
-                "location=no,links=no,scrollbars=no,toolbar=no,width=700,height=350");
+              url += "&description=" + encodeURIComponent(description.substr(0, 256))
             }
+
+            window.open(url, 'pinboard.in', "location=no,links=no,scrollbars=no,toolbar=no,width=700,height=350");
           });
         });
       }
